@@ -70,7 +70,11 @@ A modern React application for managing your car collection with authentication,
    ```
 
 6. **Open your browser**
-   Navigate to `http://localhost:3000`
+   Navigate to `http://localhost:3000` or `http://localhost:3001`
+   
+   **For mobile access:**
+   - Desktop IP: `http://10.1.10.21:3001`
+   - Mobile IP: `http://10.1.10.201:3001`
 
 ## 📋 Database Setup
 
