@@ -9,19 +9,34 @@ const AuthCallback = () => {
   useEffect(() => {
     const handleAuthCallback = async () => {
       try {
-        const { data, error } = await supabase.auth.getSession()
+        console.log('AuthCallback: Processing OAuth callback...')
+        
+        // Get the URL parameters
+        const urlParams = new URLSearchParams(window.location.search)
+        const error = urlParams.get('error')
+        const errorDescription = urlParams.get('error_description')
         
         if (error) {
-          console.error('Auth callback error:', error)
+          console.error('OAuth error:', error, errorDescription)
           navigate('/login')
           return
         }
 
+        const { data, error: sessionError } = await supabase.auth.getSession()
+        
+        if (sessionError) {
+          console.error('Auth callback error:', sessionError)
+          navigate('/login')
+          return
+        }
+
+        console.log('AuthCallback: Session data:', data)
+
         if (data.session) {
-          // Successfully authenticated, redirect to dashboard
+          console.log('AuthCallback: Successfully authenticated, redirecting to dashboard')
           navigate('/')
         } else {
-          // No session found, redirect to login
+          console.log('AuthCallback: No session found, redirecting to login')
           navigate('/login')
         }
       } catch (error) {
