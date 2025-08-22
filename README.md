@@ -38,8 +38,8 @@ A modern React application for managing your car collection with authentication,
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/car-details-manager.git
-   cd car-details-manager
+   git clone https://github.com/npaul429/carwebpage.git
+   cd carwebpage
    ```
 
 2. **Install dependencies**
